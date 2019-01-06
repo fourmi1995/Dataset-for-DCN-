@@ -1,0 +1,15 @@
+import os
+import re
+import glob
+
+files = glob.glob('Annotations/*xml')
+for filename in files:
+    f = open(filename,'r+')
+    lines = f.readlines()
+    f.close()
+
+    f = open(filename,'w+')
+    for eachline in lines:
+	a = re.sub('<name>IF</name>','<name>fi</name>',eachline)
+	f.writelines(a)
+    f.close()
